@@ -1,15 +1,15 @@
 name: antigravity-acp-provider
 title: Hermes Antigravity ACP
 repo: https://github.com/rhgo1749/hermes-antigravity-acp
-sha: 6e7bb7585ad3fc8135994648c5496f11acb490ab
+sha: c52bc8e439b6d80534da2ccbe9070b8e1cd281f4
 subdir: hermes-plugin/antigravity-acp
-version: "0.8.0"
-description: "Independent Hermes provider for Google's official Antigravity ACP server. Disclosure — runs Google's official Antigravity ACP server (installed by the project's installer from dl.google.com, sha256-pinned) as a child process that holds its own Google sign-in and sends prompts, conversation context and files it reads to Google; the server's native shell and file-edit tools are refused, so shell and file work goes through Hermes' own approval-gated tools; Google restricts third-party use of personal Antigravity OAuth, so check your account's terms; not affiliated with or endorsed by Google."
+version: "0.9.1"
+description: "Independent Hermes provider for Google's official Antigravity ACP server (Linux x64/ARM64, macOS ARM64, Windows x64/ARM64): single-plugin install registers one default profile (`antigravity-acp`, Parked-MCP default engine), with Replay (`antigravity-acp-replay`) available as an optional compatibility engine via `launch_config.json`. Disclosure — installs provider source only and runs Google's official Antigravity ACP server (installed separately by the project's installer from dl.google.com, sha256-pinned) as a child process over stdio with a per-session 127.0.0.1 MCP bridge (Parked-MCP); the child holds its own Google sign-in and sends prompts, conversation context, and guarded/redacted files it reads to Google; native shell and file-edit tools are refused so tool work goes through Hermes' own approval-gated tools; Google restricts third-party use of personal Antigravity OAuth, so check your account's terms; not affiliated with or endorsed by Google."
 maintainer: rhgo1749
 tier: community
 category: models
 requires_hermes: ">=0.21.6"
-docs_url: https://github.com/rhgo1749/hermes-antigravity-acp/blob/6e7bb7585ad3fc8135994648c5496f11acb490ab/docs/hermes-compatibility.md
+docs_url: https://github.com/rhgo1749/hermes-antigravity-acp/blob/c52bc8e439b6d80534da2ccbe9070b8e1cd281f4/docs/hermes-compatibility.md
 capabilities:
   provides_tools: []
   provides_hooks: []
@@ -18,3 +18,8 @@ capabilities:
 readme: true
 platforms:
   - linux
+  - macos
+  - windows
+known_issues:
+  - "Architecture scope: Linux x64/ARM64, macOS ARM64 (Apple Silicon), and Windows x64/ARM64 are supported; macOS x64 (Intel) is not adopted or verified."
+  - "Replay (`antigravity-acp-replay`) is an optional compatibility engine disabled by default; add `extra_providers` in `launch_config.json` to enable it."
